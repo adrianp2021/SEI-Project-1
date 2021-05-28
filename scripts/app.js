@@ -6,13 +6,14 @@ function init () {
   const width = 50
   const cellCount = width * width 
   const cells = [] 
-  let snakePosition = 25
-  let interval = 1
-  const startButton = document.querySelector('#start-button')
+  // let snakePosition = 25
+  // let interval = 1
+  const startButton = document.querySelector('.start')
   // console.log(startButton)
-  const audio = document.querySelector('#game-sound')
+  const audio = document.querySelector('.game-sound')
   // console.log(buttonSound)
 
+  // START BUTTON SOUND
   function playSound(event) {
     console.log('clicked')
     audio.src = 'sounds/mixkit-unlock-game-notification-253.wav'
@@ -21,6 +22,18 @@ function init () {
   }
 
   startButton.addEventListener('click', playSound)
+
+  // GAME MUSIC
+  const onOff = document.querySelector('.on-off')
+  const gameMusic = document.querySelector('.game-music')
+  function playMusic(event){
+    console.log('clicked')
+    gameMusic.src = 'sounds/yt1s.com - Happy and Cheerful Background Music  Casual Game Music 2 by WOW Sound.wav'
+    console.log(audio)
+    playMusic.play()
+    playMusic.pause()
+  }
+
 
   // * Make a grid
   function createGrid() {
@@ -36,57 +49,57 @@ function init () {
   }
 
   
-  function addSnake(position) {
-    const cell = document.querySelector(`.position-${position}`)
-    cell.classList.add('snake')
-  }
+  // function addSnake(position) {
+  //   const cell = document.querySelector(`.position-${position}`)
+  //   cell.classList.add('snake')
+  // }
 
-  function removeSnake(position) {
-    const cell = document.querySelector(`.position-${position}`)
-    cell.classList.remove('snake')
-  } 
+  // function removeSnake(position) {
+  //   const cell = document.querySelector(`.position-${position}`)
+  //   cell.classList.remove('snake')
+  // } 
 
-  function handleKeyUp(event) {
-    const key = event.keyCode
-    console.log('POSITION BEFORE REDEFINING --->', snakePosition)
+  // function handleKeyUp(event) {
+  //   const key = event.keyCode
+  //   console.log('POSITION BEFORE REDEFINING --->', snakePosition)
     
-    if (key === 39 && snakePosition % width !== width - 1) { // right
-      // snakePosition++ 
-      interval = snakePosition - 1
-    } else if (key === 37 && snakePosition % width !== 0) { // left
-      // snakePosition-- 
-      interval = snakePosition + 1
-    } else if (key === 38 && snakePosition >= width) {  // up
-      // snakePosition -= width 
-      interval = snakePosition + 50
-    } else if (key === 40 && snakePosition + width <= width * width - 1) { // down
-      // snakePosition += width 
-      interval = snakePosition - 50
-    } else {
-      console.log('INVALID KEY') 
-    }
-    console.log('POSITION AFTER REDEFINING --->', snakePosition)
-    addSnake(snakePosition) 
-    removeSnake(interval)
-  }
+  //   if (key === 39 && snakePosition % width !== width - 1) { // right
+  //     // snakePosition++ 
+  //     interval = snakePosition - 1
+  //   } else if (key === 37 && snakePosition % width !== 0) { // left
+  //     // snakePosition-- 
+  //     interval = snakePosition + 1
+  //   } else if (key === 38 && snakePosition >= width) {  // up
+  //     // snakePosition -= width 
+  //     interval = snakePosition + 50
+  //   } else if (key === 40 && snakePosition + width <= width * width - 1) { // down
+  //     // snakePosition += width 
+  //     interval = snakePosition - 50
+  //   } else {
+  //     console.log('INVALID KEY') 
+  //   }
+  //   console.log('POSITION AFTER REDEFINING --->', snakePosition)
+  //   addSnake(snakePosition) 
+  //   removeSnake(interval)
+  // }
 
-  function moveSnake() {
-    snakePosition = snakePosition + 50
-    addSnake(snakePosition) 
-    interval = interval - 50
-    removeSnake(interval)
+  // function moveSnake() {
+  //   snakePosition = snakePosition + 50
+  //   addSnake(snakePosition) 
+  //   interval = interval - 50
+  //   removeSnake(interval)
 
     
 
 
 
-  // * Event listeners
-  document.addEventListener('keyup', handleKeyUp) 
-
+  // // * Event listeners
+  // document.addEventListener('keyup', handleKeyUp) 
+  onOff.addEventListener('click', playMusic)
   createGrid()
-  addSnake(snakePosition) 
+  // addSnake(snakePosition) 
     
-  setInterval(moveSnake, 500)
+  // setInterval(moveSnake, 500)
 
 
 

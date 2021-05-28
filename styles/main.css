@@ -35,6 +35,7 @@ body {
   display:flex;
   justify-content: center;
   border-radius: 25px 25px 0 0;
+  margin-bottom: 50px;
 }
 
 .grid-wrapper {
@@ -53,7 +54,6 @@ body {
 }
 
 .grid div {
-  /* border: 1px solid rgb(157, 212, 53); */
   flex-grow: 1;
   height: 10px;
   width: 10px;
@@ -62,8 +62,10 @@ body {
 .side {
   height:500px;
   width: calc((100% - 500px) / 2);
-  /* background-color: yellow; */
   padding:25px;
+  font-weight: bold;
+  font-size: 25px;
+  color:rgb(218, 252, 30)
 }
 
 .dark-background {
@@ -74,10 +76,32 @@ body {
   background-color: black !important;
 }
 
+.setting-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.start, .on-off {
+  border-radius:50%;
+  background-color: rgb(218, 252, 30);
+  padding:18px;
+}
+
+.settings-words {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
 .button {
   border-radius:50%;
-  background-color: red;
-  padding:20px;
+  background-color: rgb(218, 252, 30);
+  padding:40px;
 }
 
 .side-buttons {
@@ -86,6 +110,15 @@ body {
   justify-content: space-evenly;
 }
 
+.up {
+  display:flex;
+  justify-content: center;
+}
+
+.down {
+  display:flex;
+  justify-content: center;
+}
 
 
 
