@@ -1,0 +1,66 @@
+🐍  my first game SNAKE - or perhaps it will be a bus collecting people(just a different idea)
+
+The game will see the snake eating carrots.
+For each item it eats, the tail will grow by 1. 
+The game will increase its speed (and perhaps will add some solid lines which will be an obstacle for the snake)
+
+
+HTML
+
+Creating the boilerplate and adding two divs, after which I will create the cells in JS (like we were shown today).
+
+I will create divs for: on/off music, 3 lives and the 4 buttons (with corresponding arrows) to which the user can enable the snake to move.
+
+I will create a background image of a room (giving the impression of sitting in bed) which will likely be blurry
+
+
+
+
+
+
+CSS
+
+The snake will be either green or purple.
+I will attempt to make it look cursive and not having to jump from one cell to another (it will only move on the axis: vertical and horizontal)
+
+I will attempt to make it look like the user is operating a nintendo and on the screen s/he will emulating it(see snake.jpg)
+
+I will put in the background an image of a room (to be colorful) to give the impression of being either in your room.
+
+The buttons will be red, with some shadow. 
+
+My very concept is to make the game smooth. Although the music will invite the reader to the 90's, I will attempt to make it modern.
+
+
+
+JS
+
+The snake will always have a starting position (either from a fixed place or where it died). I will write a function which will start the game once the user moved the snake.
+- once the game started, the music will also play. The *audio* element will either play a retro music (much like the arcade games) or something a bit more modern.
+
+I will write a function which will enable the user to either on/off the music.
+
+write a function to make the snake move first
+
+Once it moves, write a function to increase its speed by setInterval
+
+Write a function for the snake which makes it move either in horizontal or vertical
+-> related to the buttons, I will attempt a function to make a sound each time a button is clicked
+
+When the snake will eat the carrot, I will write a function to make it dissapear and appear randomly anywhere else on the grid (Math.random)
+
+
+I will write a function for when the snake hits it head on each side of the grid 
+-> or when it hits itself (it may be a bit tricky)
+-> another function for when the snake lost life, to end the game.
+
+Although not known yet to me, I will try and fint out how to increase the speed of the game (I assume a function could be used)
+
+
+I will write a function which everytime the snake eats a carrot, the score will be increased by one.
+
+
+
+
+
+

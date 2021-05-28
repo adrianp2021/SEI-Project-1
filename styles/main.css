@@ -1,0 +1,133 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin:0;
+  padding:0;
+}
+
+.parent {
+  display:flex;
+  justify-content: center;
+  align-items: flex-end;
+  background-image: url("https://external-preview.redd.it/duKgD4ViGTX7IyUU5U01JpGsCoh-WVX0WVVB9Xrc_QA.jpg?auto=webp&s=e76d5b61dd8891dd51c3435f3fd212b2b87dc756");
+  background-size: cover;
+  /* filter:blur(3px); */
+  width:100%;
+  height:100vh;
+}
+
+.console {
+  width: 45%;
+  height: 95%;
+  margin-bottom: 0;
+  background-color: rgb(212, 233, 230);
+  /* filter:blur(0); */
+  border-radius: 25px 25px 0 0;
+  padding:30px;
+}
+
+.screen {
+  width:100%;
+  height:auto;
+  background-color: #9DD0C2;
+  display:flex;
+  justify-content: center;
+  border-radius: 25px 25px 0 0;
+}
+
+.grid-wrapper {
+  border: 1px solid black;
+}
+
+.grid {
+  align-items: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: center;
+  height: 500px;
+  width: 500px;
+}
+
+.grid div {
+  /* border: 1px solid rgb(157, 212, 53); */
+  flex-grow: 1;
+  height: 10px;
+  width: 10px;
+}
+
+.side {
+  height:500px;
+  width: calc((100% - 500px) / 2);
+  /* background-color: yellow; */
+  padding:25px;
+}
+
+.dark-background {
+  background-color: #93C2B5 !important; 
+}
+
+.snake {
+  background-color: black !important;
+}
+
+.button {
+  border-radius:50%;
+  background-color: red;
+  padding:20px;
+}
+
+.side-buttons {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .start-button {
+  width: 30px;
+  height: 30px;
+  border-style: solid;
+  border-width: 37px;
+  border-color: #202020;
+  border-width: 37px 37px 37px 37px;
+  border-color: red blue green yellow;
+  border-width: 37px 0px 37px 74px;
+  border-color: red blue green yellow;
+  box-sizing: border-box;
+  width: 74px;
+  height: 74px;
+  border-width: 37px 0px 37px 74px;
+  border-color: transparent transparent transparent #202020;
+} */
+
+
+
+/* .button-up:hover {
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  
+  border-bottom: 5px solid black;
+
+} */
