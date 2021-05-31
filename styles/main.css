@@ -6,7 +6,7 @@ body {
   margin:0;
   padding:0;
   font-family: 'Press Start 2P', cursive;
-  backdrop-filter: blur(5px);
+
 }
 
 .parent {
@@ -15,15 +15,23 @@ body {
   align-items: flex-end;
   background-image: url("https://external-preview.redd.it/duKgD4ViGTX7IyUU5U01JpGsCoh-WVX0WVVB9Xrc_QA.jpg?auto=webp&s=e76d5b61dd8891dd51c3435f3fd212b2b87dc756");
   background-size: cover;
+  position: relative;
+  top:0;
+  left:0;
   width:100%;
   height:100vh;
 }
 
+/* .carrot {
+  width:90px;
+  height:30px;
+} */
+
 .console {
-  width: 45%;
+  width: 40%;
   height: 95%;
   margin-bottom: 0;
-  background-color: #38c4c9;
+  background-color:rgb(44, 173, 173);
   border-radius: 25px 25px 0 0;
   padding:30px;
 }
@@ -36,7 +44,7 @@ body {
   justify-content: center;
   border-radius: 25px 25px 25px 25px;
   margin-bottom: 50px;
-  background: linear-gradient(120deg,#5FF330, #34caa4, #d5ee13, #ee8913, #2979ff, #ff0020);
+  background: linear-gradient(120deg,#5FF330, #d5ee13, #34caa4, #ee8913, #2979ff, white, #ff0020);
   background-size: 1000% 1000%;
   -webkit-animation: AnimationName 39s ease infinite;
   -moz-animation: AnimationName 39s ease infinite;
@@ -71,16 +79,8 @@ body {
   width: calc((100% - 500px) / 2);
   padding:25px;
   font-weight: bold;
-  font-size: 25px;
-  background-image: linear-gradient(100deg, teal, white, black);
+  font-size: 15px;
 }
-
-/* .hearts {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-} */
-
 
 .dark-background {
   background-color: #93C2B5 !important; 
@@ -89,17 +89,16 @@ body {
 .snake {
   background-color: black !important;
   border-radius: 5px;
-  background-image:linear-gradient(150deg,green, red);
+  background-image:linear-gradient(red, yellow, blue)
 }
 
 div.carrot {
   background-color: orange;
-  background-image: url('../Carrots/Carrot.gif');
-  background-repeat: no-repeat;
+  background-image: url('../Carrots/carrot.gif');
+  /* background-repeat: no-repeat; */
   background-size: cover;
   cursor: pointer;
-  width:30px;
-  
+  width:10px;
 }
 
 .setting-buttons {
@@ -124,7 +123,7 @@ div.carrot {
   margin-right: 5%;
 }
 
-.button {
+.mega {
   border-radius:50%;
   background-color: rgb(223, 255, 44);
   padding:20px;
@@ -135,9 +134,9 @@ div.carrot {
   transition: 0.5;
 }
 
-.button:hover {
-  opacity: 3;
-  background-color: red;
+.mega:hover {
+  opacity: 10;
+  background-color: rgb(154, 201, 231);
 }
 
 .side-buttons {
@@ -156,6 +155,10 @@ div.carrot {
   display:flex;
   justify-content: center;
 }
+
+
+
+
 
 
 @-webkit-keyframes AnimationName {
