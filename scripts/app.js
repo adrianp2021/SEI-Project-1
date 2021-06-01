@@ -1,6 +1,6 @@
 function init() {
 
-    
+
   const startButton = document.querySelector('.start')
   // console.log(startButton)
   const audio = document.querySelector('.game-sound')
@@ -18,7 +18,7 @@ function init() {
   const arrowButton = document.querySelector('.mega')
   const arrowsSounds = document.querySelector('.arrow-sound')
 
-  function arrowNoise(event){
+  function arrowNoise(event) {
     console.log('clicked')
     audio.src = 'sounds/mixkit-fast-small-sweep-transition-166.wav'
     console.log(audio)
@@ -27,23 +27,23 @@ function init() {
   arrowButton.addEventListener('click', arrowNoise)
 
 
-  // GAME MUSIC
-  const onOff = document.querySelector('.on-off')
-  const gameMusic = document.querySelector('.game-music')
-  function playMusic(event) {
-    console.log('clicked')
-    audio.src = 'sounds/yt1s.com - Happy and Cheerful Background Music  Casual Game Music 2 by WOW Sound.wav'
-    console.log(audio)
-    audio.play()
-  }
-  function pauseMusic(event) {
-    audio.pause()
-  }
+  // // GAME MUSIC
+  // const onOff = document.querySelector('.on-off')
+  // const gameMusic = document.querySelector('.game-music')
+  // function playMusic(event) {
+  //   console.log('clicked')
+  //   audio.src = 'sounds/yt1s.com - Happy and Cheerful Background Music  Casual Game Music 2 by WOW Sound.wav'
+  //   console.log(audio)
+  //   audio.play()
+  // }
+  // function pauseMusic(event) {
+  //   audio.pause()
+  // }
 
-  onOff.addEventListener('click', playMusic)
-  window.onload = playMusic()
+  // onOff.addEventListener('click', playMusic)
+  // window.onload = playMusic()
 
-  
+
   // const audio = document.querySelector('audio')
   // const playPause = document.querySelector('.on-off')
   // const count = 0
@@ -71,6 +71,7 @@ function init() {
   let score = 0
   const snake = []
   let direction = 'down'
+  let speed = 500
 
 
   // * MAKE A GRID
@@ -86,6 +87,11 @@ function init() {
   }
   createGrid()  // this had not initially been invoked, hence the snake (below) could not be found in position 25
 
+  function increaseSpeed(){
+    speed = speed * 5
+  }
+  
+
   //ADD THE SNAKE
   function addSnake(position) {
     // console.log(position)
@@ -96,17 +102,20 @@ function init() {
   }
   addSnake(snakePosition)
 
-  // ADD THE CARROT
-  // let carrotIndex = 0
-  let carrotPosition = Math.floor(Math.random() * cells.length)
 
-  function newCarrot(position){
-    const cell = document.querySelector(`.position-${position}`)
+
+
+  function newCarrot() {
+    const carrotPosition = Math.floor(Math.random() * cells.length)
     cells[carrotPosition].classList.add('carrot')
+    // ADD THE CARROT
+    // let carrotIndex = 0
   }
-  newCarrot(carrotPosition)
+  newCarrot()
 
-  
+
+
+
   // REMOVE THE SNAKE
   function removeSnake(position) {
     const cell = document.querySelector(`.position-${position}`)
@@ -128,10 +137,23 @@ function init() {
       console.log('INVALID KEY')
     }
   }
+  
+  function checkIfContainsCarrot(element) {
+    if (element.classList.contains('carrot')) {
+      score++
+      element.classList.remove('carrot')
+      newCarrot()
+      increaseSpeed()
+    } else {
+      if (snake.length >= 5) {
+        snake.shift()
+      }
+    }
+  }
 
   function run() {
-    
-  
+    const element = document.querySelector(`.position-${snakePosition}`)
+
     if (direction === 'right') {
       snakePosition++
     } else if (direction === 'left') {
@@ -142,92 +164,28 @@ function init() {
       snakePosition -= width
     }
 
-    if (snake.length >= 5) {
-      const element = document.querySelector(`.position-${snakePosition}`)
-      if (!element.classList.contains('.carrot')) {
-        snake.shift()
-      }
-        
-    }
+    checkIfContainsCarrot(element)
 
-    // addSnake(snakePosition)
     snake.push(snakePosition)
-    console.log(snake)
-    const cells = document.querySelectorAll('.snake')
 
-    cells.forEach(function(element){
-    
+    const snakeBody = document.querySelectorAll('.snake')
+
+    snakeBody.forEach(function (element) {
+
       element.classList.remove('snake')
     })
-    snake.forEach(function(index) {
+    snake.forEach(function (index) {
       const element = document.querySelector(`.position-${index}`)
       element.classList.add('snake')
+
     })
   }
-  setInterval(run, 500)
+  
+  
+    
+  setInterval(run, speed)
   document.addEventListener('keyup', handleKeyUp)
-
-  
-  const tail = snake.pop()
-  cells[tail].classList.remove('snake')
-  snake.unshift(snake)
-  function snakeEatsCarrot() {
-  if(snake.length >= 5)
-    const element = document.querySelector(`.position-${snakePosition}`)
-  if (element.classList.contains('.carrot')){
-    snake.push(width)
-  }
-  }
-}
-snakeEatsCarrot()
-
-// (snake.classList.contains('carrot')){
-//   snake.classList.remove('carrot')
-//   snake.classList.add('snake')
-//   snake.push(tail)
-
-  // let carrot = document.querySelector('.carrot')
-  
-    // if (snake.classList.contains('carrot')) {
-    //   snake.classList.remove('carrot')
-    //   snake.classList.add('snake')
-    // }
-    // snakeEatsCarrot()
-
-
-    // cells[carrotPosition].classList.remove('carrot')
-    // carrotPosition = Math.floor(Math.random() * cells.length)
-    // cells[carrotPosition].classList.add('carrot')
-
-
-    // cells[snake].classList.remove('snake')
-    // snake.unshift(snake + direction)
-    // if (cells[snake].classList.contains('carrot'))
-    //   cells[snake].classList.remove('carrot')
-    // cells[tail].classList.add('snake')
-    // snake.push(tail)
-  }
-
-
-
-
-  
-  // console.log(carrotPosition)
-  // console.log(grid[carrotPosition])
-  // console.log(grid[carrotPosition].classList.add('.carrot'))
-  
-  // function snakeHitting() {
-  //   if (
-  //     (snakePosition[0]) + width >= (width * width) && direction === width) ||
-  //     (snakePosition[0]) % width === width - 1 && direction === 1) ||
-  //     (snakePosition[0]) % width === 0 && direction === -1)
-  //     (snakePosition[0] - width < 0 && direction === -width) ||
-  //     cells[snakePosition[0] + direction].classList.contains.('snake')
-  //    } else  {
-  //       return clearInterval(interval)
-  //     }
-  //     const tail = snakePosition.pop()
-  //     cells[tail].classList
 
 }
 window.addEventListener('DOMContentLoaded', init)
+  
