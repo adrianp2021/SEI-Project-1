@@ -28,20 +28,20 @@ function init() {
 
 
   // // GAME MUSIC
-  // const onOff = document.querySelector('.on-off')
-  // const gameMusic = document.querySelector('.game-music')
-  // function playMusic(event) {
-  //   console.log('clicked')
-  //   audio.src = 'sounds/yt1s.com - Happy and Cheerful Background Music  Casual Game Music 2 by WOW Sound.wav'
-  //   console.log(audio)
-  //   audio.play()
-  // }
-  // function pauseMusic(event) {
-  //   audio.pause()
-  // }
+  const onOff = document.querySelector('.on-off')
+  const gameMusic = document.querySelector('.game-music')
+  function playMusic(event) {
+    console.log('clicked')
+    audio.src = 'sounds/yt1s.com - Happy and Cheerful Background Music  Casual Game Music 2 by WOW Sound.wav'
+    console.log(audio)
+    audio.play()
+  }
+  function pauseMusic(event) {
+    audio.pause()
+  }
 
-  // onOff.addEventListener('click', playMusic)
-  // window.onload = playMusic()
+  onOff.addEventListener('click', playMusic)
+  window.onload = playMusic()
 
 
   // const audio = document.querySelector('audio')
@@ -67,11 +67,13 @@ function init() {
   const cells = [] //empty array(when creating the divs, keep track of them)
   let snakePosition = 25
   let interval = 1
+  const livesDisplay = document.querySelector('#lives-display')
   let remainingLives = 3
+  const scoreDisplay = document.querySelector('#score-display')
   let score = 0
   const snake = []
   let direction = 'down'
-  let speed = 500
+  let speed = 150
 
 
   // * MAKE A GRID
@@ -88,7 +90,7 @@ function init() {
   createGrid()  // this had not initially been invoked, hence the snake (below) could not be found in position 25
 
   function increaseSpeed(){
-    speed = speed * 5
+    speed = speed + 50
   }
   
 
@@ -102,9 +104,7 @@ function init() {
   }
   addSnake(snakePosition)
 
-
-
-
+  // NEW CARROT
   function newCarrot() {
     const carrotPosition = Math.floor(Math.random() * cells.length)
     cells[carrotPosition].classList.add('carrot')
@@ -112,8 +112,6 @@ function init() {
     // let carrotIndex = 0
   }
   newCarrot()
-
-
 
 
   // REMOVE THE SNAKE
@@ -138,12 +136,17 @@ function init() {
     }
   }
   
+  // EATING CARROT
   function checkIfContainsCarrot(element) {
-    if (element.classList.contains('carrot')) {
-      score++
+    if (element.classList.contains('carrot')) {      
       element.classList.remove('carrot')
+      score += 100
+      scoreDisplay.innerText = score 
+      remainingLives--
+      livesDisplay.innerText = remainingLives
       newCarrot()
       increaseSpeed()
+    
     } else {
       if (snake.length >= 5) {
         snake.shift()
