@@ -30,6 +30,7 @@ function init() {
   // // GAME MUSIC
   const onOff = document.querySelector('.on-off')
   const gameMusic = document.querySelector('.game-music')
+
   function playMusic(event) {
     console.log('clicked')
     audio.src = 'sounds/yt1s.com - Happy and Cheerful Background Music  Casual Game Music 2 by WOW Sound.wav'
@@ -41,23 +42,8 @@ function init() {
   }
 
   onOff.addEventListener('click', playMusic)
-  window.onload = playMusic()
+  window.onload = playMusic() // start onload as a function (true); if click the button start, if again clicked stop it
 
-
-  // const audio = document.querySelector('audio')
-  // const playPause = document.querySelector('.on-off')
-  // const count = 0
-
-  // function playPause(event) {
-  //   if(count == 0){
-  //     count = 1;
-  //     audio.play();
-  //   }else{
-  //     count = 0;
-  //     audio.pause()
-  //   }
-  // }
-  // playPause.addEventListener('click', playPause)
 
 
 
@@ -66,7 +52,6 @@ function init() {
   const cellCount = width * width // number of cells in the grid
   const cells = [] //empty array(when creating the divs, keep track of them)
   let snakePosition = 25
-  let interval = 1
   const livesDisplay = document.querySelector('#lives-display')
   let remainingLives = 3
   const scoreDisplay = document.querySelector('#score-display')
@@ -74,7 +59,7 @@ function init() {
   const snake = []
   let direction = 'down'
   let speed = 150
-
+  const wall = []
 
   // * MAKE A GRID
   function createGrid() {
@@ -87,32 +72,33 @@ function init() {
       cells.push(cell)
     }
   }
-  createGrid()  // this had not initially been invoked, hence the snake (below) could not be found in position 25
+  createGrid()
 
-  function increaseSpeed(){
-    speed = speed + 50
+  // SPEED
+  function increaseSpeed() {
+    speed = speed + 500
   }
-  
 
   //ADD THE SNAKE
   function addSnake(position) {
     // console.log(position)
     const cell = document.querySelector(`.position-${position}`)
-    // console.log(cell)
+    console.log(cell)
     cell.classList.add('snake')
     // cell.classList.add('carrot')
   }
   addSnake(snakePosition)
 
-  // NEW CARROT
+  // NEW CARROT - new array cu toate pozitiile din grid, in afara de cele care sunt border
   function newCarrot() {
-    const carrotPosition = Math.floor(Math.random() * cells.length)
+    const carrotPositions = []     // trebuie sa scot din cells, elementele din wall array - needs all the divs which are NOT the border
+    for(let i = 51; i < 2448; i++)
+    const carrotPosition = cells[carrotPositions[Math.floor(Math.random() * carrotPositions.length)]] // gives a random number 
     cells[carrotPosition].classList.add('carrot')
     // ADD THE CARROT
     // let carrotIndex = 0
   }
   newCarrot()
-
 
   // REMOVE THE SNAKE
   function removeSnake(position) {
@@ -120,6 +106,9 @@ function init() {
     cell.classList.remove('snake')
   }
   removeSnake(snakePosition)
+
+
+  // SNAKE DIRECTION
   function handleKeyUp(event) {
     const key = event.keyCode
     console.log('POSITION BEFORE REDEFINING --->', snakePosition)
@@ -135,18 +124,15 @@ function init() {
       console.log('INVALID KEY')
     }
   }
-  
+
   // EATING CARROT
   function checkIfContainsCarrot(element) {
-    if (element.classList.contains('carrot')) {      
+    if (element.classList.contains('carrot')) {
       element.classList.remove('carrot')
       score += 100
-      scoreDisplay.innerText = score 
-      remainingLives--
-      livesDisplay.innerText = remainingLives
+      scoreDisplay.innerText = score
       newCarrot()
       increaseSpeed()
-    
     } else {
       if (snake.length >= 5) {
         snake.shift()
@@ -154,41 +140,87 @@ function init() {
     }
   }
 
-  function run() {
-    const element = document.querySelector(`.position-${snakePosition}`)
+  // CREATE WALL
 
-    if (direction === 'right') {
-      snakePosition++
-    } else if (direction === 'left') {
-      snakePosition--
-    } else if (direction === 'down') {
-      snakePosition += width
-    } else {
-      snakePosition -= width
+  function setWall() {
+    for (let i = 0; i < 2499; i += 50) {   // create right wall
+      wall.push(i)
+    }
+    for (let i = 2499; i > 2499 - 50; i--) {
+      console.log(i)                        // create bottom wall
+      wall.push(i)
+    }
+    for (let i = 49; i < 2499; i += 50) {   // create left wall
+      wall.push(i)
+    }
+    for (let i = 0; i < 50; i++) {     // create top wall
+      wall.push(i)
     }
 
-    checkIfContainsCarrot(element)
-
-    snake.push(snakePosition)
-
-    const snakeBody = document.querySelectorAll('.snake')
-
-    snakeBody.forEach(function (element) {
-
-      element.classList.remove('snake')
-    })
-    snake.forEach(function (index) {
-      const element = document.querySelector(`.position-${index}`)
-      element.classList.add('snake')
-
-    })
   }
-  
-  
-    
-  setInterval(run, speed)
-  document.addEventListener('keyup', handleKeyUp)
+  setWall()
+
+  wall.forEach(element => {
+    const wallItem = document.querySelector(`.position-${element}`)
+
+    wallItem.classList.add('border')
+  })
+
+  function snakeDies(interval) {
+    clearInterval(interval)
+    resetGame()
+  }
+
+  function init() {
+    let runInterval = setInterval(() => {
+      if (direction === 'right') {
+        snakePosition++
+      } else if (direction === 'left') {
+        snakePosition--
+      } else if (direction === 'down') {
+        snakePosition += width
+      } else {
+        snakePosition -= width // up
+      }
+
+      const element = document.querySelector(`.position-${snakePosition}`)
+      checkIfContainsCarrot(element)
+
+      snake.push(snakePosition)
+
+      const snakeBody = document.querySelectorAll('.snake')
+      snakeBody.forEach(function (el) {
+        el.classList.remove('snake')
+      })
+      snake.forEach(function (index) {
+        const element = document.querySelector(`.position-${index}`)
+        element.classList.add('snake')
+      })
+
+      if (element.classList.contains('border')) {
+        snakeDies(runInterval)
+      }
+    }, speed)
+    document.addEventListener('keyup', handleKeyUp)
+  }
+
+  const restartButton = document.querySelector('.restart')
+  // RESET GAME
+  function startGame() {
+    remainingLives--
+    livesDisplay.innerText = remainingLives
+    snakePosition = 75
+    direction = 'down'
+    addSnake(snakePosition)
+    init()
+    score = 0
+  }
+  startGame()
+
+  restartButton.addEventListener('click', startGame)
+  // 
+
 
 }
 window.addEventListener('DOMContentLoaded', init)
-  
+

@@ -6,7 +6,6 @@ body {
   margin:0;
   padding:0;
   font-family: 'Press Start 2P', cursive;
-
 }
 
 .parent {
@@ -32,8 +31,10 @@ body {
   height: 95%;
   margin-bottom: 0;
   background-color:rgb(44, 173, 173);
-  background-image: url('../images/90\'\ fashion.jpeg');
+  background-image: url('../images/simpson.jpeg');
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   /* background-image: linear-gradient(rgb(60, 137, 226), beige,yellow, red) ; */
   border-radius: 25px 25px 0 0;
   padding:30px;
@@ -117,35 +118,41 @@ div.carrot {
   padding:15px;
 }
 
+.restart {
+  border-radius:50%;
+  background-color: rgb(218, 252, 30);
+  padding:15px;
+}
+
 .settings-words {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
   margin-left: 5%;
   margin-right: 5%;
+  color:#ffffff;
 }
 
 .mega {
   border-radius:50%;
-  background-color: rgb(223, 255, 44);
+  background-color: rgb(19, 18, 17);
   padding:20px;
-  box-shadow: 3px 3px 3px rgb(207, 65, 65);
-  color:white;
+  box-shadow: 3px 3px 3px rgb(61, 41, 41);
+  color:rgb(68, 54, 54);
   text-align:center;
-  opacity: 0.6;
+  opacity: 4;
   transition: 0.5;
 }
 
 .mega:hover {
-  opacity: 10;
-  background-color: rgb(154, 201, 231);
+  opacity: 5;
+  background-color: rgb(69, 79, 85);
 }
 
 .side-buttons {
   display: flex;
   justify-content: center;
   justify-content: space-evenly;
-  
 }
 
 .up {
@@ -159,7 +166,9 @@ div.carrot {
 }
 
 
-
+.border {
+  background-color:black;
+}
 
 
 
