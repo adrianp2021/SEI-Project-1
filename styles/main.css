@@ -21,10 +21,10 @@ body {
   height:100vh;
 }
 
-/* .carrot {
+.carrot {
   width:90px;
   height:30px;
-} */
+}
 
 .console {
   width: 40%;
@@ -99,7 +99,7 @@ div.carrot {
   background-color: orange;
   background-image: url('../Carrots/carrot.gif');
   /* background-repeat: no-repeat; */
-  background-size: cover;
+  background-size: contain;
   cursor: pointer;
   width:10px;
 }
@@ -139,9 +139,8 @@ div.carrot {
   padding:20px;
   box-shadow: 3px 3px 3px rgb(61, 41, 41);
   color:rgb(68, 54, 54);
-  text-align:center;
   opacity: 4;
-  transition: 0.5;
+  transition: 8;
 }
 
 .mega:hover {

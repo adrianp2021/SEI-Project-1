@@ -1,41 +1,40 @@
 function init() {
 
-
+  //   ------  MUSIC  -------
   const startButton = document.querySelector('.start')
   // console.log(startButton)
   const audio = document.querySelector('.game-sound')
   // console.log(buttonSound)
 
   function playSound(event) {
-    console.log('clicked')
+    // console.log('clicked')
     audio.src = 'sounds/mixkit-unlock-game-notification-253.wav'
-    console.log(audio)
+    // console.log(audio)
     audio.play()
   }
   startButton.addEventListener('click', playSound)
 
-  // Arrow sounds
-  const arrowButton = document.querySelector('.mega')
-  const arrowsSounds = document.querySelector('.arrow-sound')
+  // -------  Arrow sounds  -------
+  // const arrowButton = document.querySelector('.mega')
+  // const arrowsSounds = document.querySelector('.arrow-sound')
+  // function arrowNoise(event) {
+  //   // console.log('clicked')
+  //   audio.src = 'sounds/mixkit-retro-game-notification-212.wav'
+  //   // console.log(audio)
+  //   audio.play()
+  // }
+  // arrowButton.addEventListener('click', arrowNoise)
 
-  function arrowNoise(event) {
-    console.log('clicked')
-    audio.src = 'sounds/mixkit-fast-small-sweep-transition-166.wav'
-    console.log(audio)
-    audio.play()
-  }
-  arrowButton.addEventListener('click', arrowNoise)
 
-
-  // // GAME MUSIC
+  // ------- GAME MUSIC  -------
   const onOff = document.querySelector('.on-off')
   const gameMusic = document.querySelector('.game-music')
 
   function playMusic(event) {
-    console.log('clicked')
+    // console.log('clicked')
     audio.src = 'sounds/yt1s.com - Happy and Cheerful Background Music  Casual Game Music 2 by WOW Sound.wav'
-    console.log(audio)
-    audio.play()
+    // console.log(audio)
+    // audio.play()
   }
   function pauseMusic(event) {
     audio.pause()
@@ -60,8 +59,9 @@ function init() {
   let direction = 'down'
   let speed = 150
   const wall = []
+  
 
-  // * MAKE A GRID
+  // -------  MAKE A GRID  -------
   function createGrid() {
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
@@ -74,58 +74,71 @@ function init() {
   }
   createGrid()
 
-  // SPEED
+  // -------  SPEED  -------
   function increaseSpeed() {
     speed = speed + 500
   }
 
-  //ADD THE SNAKE
+  // -------  ADD THE SNAKE  -------
   function addSnake(position) {
     // console.log(position)
     const cell = document.querySelector(`.position-${position}`)
-    console.log(cell)
+    // console.log(cell)
     cell.classList.add('snake')
     // cell.classList.add('carrot')
   }
   addSnake(snakePosition)
 
-  // NEW CARROT - new array cu toate pozitiile din grid, in afara de cele care sunt border
+  // -------  NEW CARROT  -------- 
   function newCarrot() {
-    const carrotPositions = []     // trebuie sa scot din cells, elementele din wall array - needs all the divs which are NOT the border
-    for(let i = 51; i < 2448; i++)
-    const carrotPosition = cells[carrotPositions[Math.floor(Math.random() * carrotPositions.length)]] // gives a random number 
-    cells[carrotPosition].classList.add('carrot')
-    // ADD THE CARROT
-    // let carrotIndex = 0
+    const carrotPositions = cells.filter(item => {
+      return !item.classList.contains('border')
+    })
+    // console.log("filtered item", carrotPositions.length)
+    const carrotPosition = carrotPositions[Math.floor(Math.random() * carrotPositions.length)].classList.value // gives a random number 
+    // console.log("current position", carrotPosition)
+    document.querySelector(`.${carrotPosition}`).classList.add('carrot')
   }
-  newCarrot()
-
-  // REMOVE THE SNAKE
+  
+  // -------  REMOVE THE SNAKE  -------
   function removeSnake(position) {
     const cell = document.querySelector(`.position-${position}`)
     cell.classList.remove('snake')
   }
   removeSnake(snakePosition)
 
+  //  -------  GAME OVER  -------
+  function isgameOver(interval){
+    // let gameOver = false
+    if (remainingLives > 0) {
+      clearInterval(interval)
+    }
+  }
+  isgameOver()
 
-  // SNAKE DIRECTION
+
+  // -------  SNAKE DIRECTION  -------
   function handleKeyUp(event) {
     const key = event.keyCode
     console.log('POSITION BEFORE REDEFINING --->', snakePosition)
     if (key === 39 && snakePosition % width !== width - 1) { // right
       direction = 'right'
+      arrowNoise()
     } else if (key === 37 && snakePosition % width !== 0) { // left
       direction = 'left'
+      arrowNoise()
     } else if (key === 38 && snakePosition >= width) {  // up
       direction = 'up'
+      arrowNoise()
     } else if (key === 40 && snakePosition + width <= width * width - 1) { // down
       direction = 'down'
+      arrowNoise()
     } else {
       console.log('INVALID KEY')
     }
   }
 
-  // EATING CARROT
+  // -------  EATING CARROT  -------
   function checkIfContainsCarrot(element) {
     if (element.classList.contains('carrot')) {
       element.classList.remove('carrot')
@@ -140,14 +153,13 @@ function init() {
     }
   }
 
-  // CREATE WALL
-
+  // -------  CREATE WALL -------
   function setWall() {
     for (let i = 0; i < 2499; i += 50) {   // create right wall
       wall.push(i)
     }
     for (let i = 2499; i > 2499 - 50; i--) {
-      console.log(i)                        // create bottom wall
+      // console.log(i)                        // create bottom wall
       wall.push(i)
     }
     for (let i = 49; i < 2499; i += 50) {   // create left wall
@@ -156,23 +168,24 @@ function init() {
     for (let i = 0; i < 50; i++) {     // create top wall
       wall.push(i)
     }
-
   }
   setWall()
 
+
   wall.forEach(element => {
     const wallItem = document.querySelector(`.position-${element}`)
-
     wallItem.classList.add('border')
   })
 
+  // -------  SNAKE DIES  -------
   function snakeDies(interval) {
     clearInterval(interval)
-    resetGame()
+    startGame() 
+    // console.log(startGame)
   }
 
   function init() {
-    let runInterval = setInterval(() => {
+    const runInterval = setInterval(() => {
       if (direction === 'right') {
         snakePosition++
       } else if (direction === 'left') {
@@ -205,7 +218,10 @@ function init() {
   }
 
   const restartButton = document.querySelector('.restart')
-  // RESET GAME
+
+
+  
+  // -------  NEW GAME  -------
   function startGame() {
     remainingLives--
     livesDisplay.innerText = remainingLives
@@ -213,12 +229,13 @@ function init() {
     direction = 'down'
     addSnake(snakePosition)
     init()
-    score = 0
+    scoreDisplay.innerText = 0
   }
+  
   startGame()
-
+  newCarrot()  
   restartButton.addEventListener('click', startGame)
-  // 
+  
 
 
 }
