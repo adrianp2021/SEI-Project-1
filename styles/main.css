@@ -27,7 +27,7 @@ body {
 } */
 
 .console {
-  width: 40%;
+  width: 50%;
   height: 95%;
   margin-bottom: 0;
   background-color:rgb(44, 173, 173);
@@ -81,7 +81,7 @@ body {
   width: calc((100% - 500px) / 2);
   padding:25px;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .dark-background {
@@ -124,11 +124,11 @@ div.carrot {
 
 .settings-words {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin-bottom: 15px;
   margin-left: 5%;
   margin-right: 5%;
-  color:#072cff;
+  color:#ffffff;
 }
 
 .mega {
