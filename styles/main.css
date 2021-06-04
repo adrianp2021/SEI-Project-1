@@ -21,10 +21,10 @@ body {
   height:100vh;
 }
 
-.carrot {
+/* .carrot {
   width:90px;
   height:30px;
-}
+} */
 
 .console {
   width: 40%;
@@ -35,7 +35,6 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  /* background-image: linear-gradient(rgb(60, 137, 226), beige,yellow, red) ; */
   border-radius: 25px 25px 0 0;
   padding:30px;
 }
@@ -98,7 +97,6 @@ body {
 div.carrot {
   background-color: orange;
   background-image: url('../Carrots/carrot.gif');
-  /* background-repeat: no-repeat; */
   background-size: contain;
   cursor: pointer;
   width:10px;
@@ -126,19 +124,19 @@ div.carrot {
 
 .settings-words {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-bottom: 15px;
   margin-left: 5%;
   margin-right: 5%;
-  color:#ffffff;
+  color:#072cff;
 }
 
 .mega {
   border-radius:50%;
-  background-color: rgb(19, 18, 17);
+  background-color: rgb(129, 197, 66);
   padding:20px;
   box-shadow: 3px 3px 3px rgb(61, 41, 41);
-  color:rgb(68, 54, 54);
+  color:rgb(116, 98, 98);
   opacity: 4;
   transition: 8;
 }
@@ -164,9 +162,8 @@ div.carrot {
   justify-content: center;
 }
 
-
 .border {
-  background-color:black;
+  background-color:rgb(68, 65, 65);
 }
 
 
