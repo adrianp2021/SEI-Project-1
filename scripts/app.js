@@ -24,6 +24,7 @@ function initGame() {
     audio.src = 'sounds/yt1s.com - Happy and Cheerful Background Music  Casual Game Music 2 by WOW Sound.wav'
     console.log('the audio', audio)
     if (soundActive) {
+      audio.volume = 0.8
       audio.play()
     } else {
       audio.pause()
@@ -37,6 +38,7 @@ function initGame() {
   const audio = document.querySelector('.arrow-sound')
   function arrowNoise(event) {
     audio.src = 'sounds/mixkit-retro-game-notification-212.wav'
+    audio.volume = 0.4
     audio.play()
   }
   arrowButton.addEventListener('click', arrowNoise)

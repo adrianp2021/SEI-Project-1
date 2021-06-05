@@ -28,7 +28,7 @@ body {
 
 .console {
   width: 50%;
-  height: 95%;
+  height: 100%;
   margin-bottom: 0;
   background-color:rgb(44, 173, 173);
   background-image: url('../images/simpson.jpeg');
@@ -76,7 +76,7 @@ body {
 
 .side {
   display: flex;
-  flex-grow:wrap;
+  flex-shrink: 1;
   height:auto;
   width: calc((100% - 500px) / 2);
   padding:25px;
@@ -84,9 +84,9 @@ body {
   font-size: 13px;
 }
 
-.dark-background {
+/* .dark-background {
   background-color: #93C2B5 !important; 
-}
+} */
 
 .snake {
   background-color: black !important;
@@ -134,7 +134,7 @@ div.carrot {
 .mega {
   border-radius:50%;
   background-color: rgb(129, 197, 66);
-  padding:20px;
+  padding:15px;
   box-shadow: 3px 3px 3px rgb(61, 41, 41);
   color:rgb(116, 98, 98);
   opacity: 4;
@@ -165,8 +165,6 @@ div.carrot {
 .border {
   background-color:rgb(68, 65, 65);
 }
-
-
 
 @-webkit-keyframes AnimationName {
   0%{background-position:0% 65%}
