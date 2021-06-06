@@ -28,6 +28,7 @@ body {
 
 .console {
   width: 50%;
+  min-width: 752px;
   height: 100%;
   margin-bottom: 0;
   background-color:rgb(44, 173, 173);
@@ -41,6 +42,7 @@ body {
 
 .screen {
   width:100%;
+  min-width: 652px;
   height:auto;
   display:flex;
   justify-content: center;
@@ -79,7 +81,7 @@ body {
   flex-shrink: 1;
   height:auto;
   width: calc((100% - 500px) / 2);
-  padding:25px;
+  padding: 25px 5px;
   font-weight: bold;
   font-size: 13px;
 }

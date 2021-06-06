@@ -9,7 +9,7 @@ function initGame() {
   const wall = []
   // const restartButton = document.querySelector('.restart')
   const startButton = document.querySelector('.on-off')
-  const soundActive = true
+
 
   let snake = []
   let direction = 'down'
@@ -17,28 +17,30 @@ function initGame() {
   let score = 0
   let snakePosition = 125
   let remainingLives = 3
+  let soundActive = true
 
 
   // -------  GAME MUSIC  -------
   function playSound() {
-    audio.src = 'sounds/yt1s.com - Happy and Cheerful Background Music  Casual Game Music 2 by WOW Sound.wav'
-    console.log('the audio', audio)
+    const gameSound = document.querySelector('.game-sound')
+    gameSound.src = 'sounds/yt1s.com - Happy and Cheerful Background Music  Casual Game Music 2 by WOW Sound.wav'
+
     if (soundActive) {
-      audio.volume = 0.8
-      audio.play()
+      gameSound.play()
     } else {
-      audio.pause()
+      gameSound.pause()
     }
+    soundActive = !soundActive
   }
   startButton.addEventListener('click', playSound)
 
 
   // -------  ARROW SOUNDS  -------
   const arrowButton = document.querySelector('.mega')
-  const audio = document.querySelector('.arrow-sound')
-  function arrowNoise(event) {
+
+  function arrowNoise() {
+    const audio = document.querySelector('.arrow-sound')
     audio.src = 'sounds/mixkit-retro-game-notification-212.wav'
-    audio.volume = 0.4
     audio.play()
   }
   arrowButton.addEventListener('click', arrowNoise)
