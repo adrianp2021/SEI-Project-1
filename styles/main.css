@@ -35,7 +35,7 @@ body {
   background-image: url('../images/simpson.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position:left;
   border-radius: 25px 25px 0 0;
   padding:30px;
 }
@@ -107,7 +107,7 @@ div.carrot {
 .setting-buttons {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
   margin-left: 5%;
   margin-right: 5%;
 }
@@ -115,7 +115,7 @@ div.carrot {
 .start, .on-off {
   border-radius:50%;
   background-color: rgb(218, 252, 30);
-  padding:15px;
+  padding:10px;
 }
 
 .restart {
