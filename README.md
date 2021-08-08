@@ -1,16 +1,17 @@
 # General Assembly - Project 1
 
+## Overview
 
-This is the first project for the Software Engineering Immersive course, where I used for the first time JavaScript.
+This was the first project for the GA Software Engineering Immersive course, where I used JavaScript for the first time.
 
 ![13B10997-0874-48A2-8487-E825DF1286EF](https://user-images.githubusercontent.com/83225952/128079151-677d6296-d12b-4ca4-99c6-f90e619e1358.jpeg)
 
 
-# Task and timeframe
+## Brief
 
 Within a timeframe of 8 days, I had to build a fully functional browser game with vanilla JavaSript.
 
-# Technologies used
+## Technologies used
 
 - HTML5
 - CSS3
@@ -18,19 +19,19 @@ Within a timeframe of 8 days, I had to build a fully functional browser game wit
 - GitHub
 - Git
 
-# Snake
+## Snake
 
-Snake is a game of childhood, hence, the opportunity to cement my JavaScript skills and recreate the game have been learning curves. The game will automatically start on the page load and once the snake dies, it can be brought to life by pressing the Enter key. If it looses all 3 lives, game over.
+Snake is a childhood classic, and re-creating it provided me with the opportunity to cement my JavaScript skills and recreating the game was an excellent learning curve. The game will automatically start on the load page and once the snake dies, it can be brought back to life by pressing the Enter key. If it loses all 3 lives then it is game over.
 
-# Deployment
+## Deployment
 
 The game has been deployed on Github and you can play it [here](https://adrianp2021.github.io/SEI-Project-1/) (please see a snippet below).
 
 ![snake snippet](https://user-images.githubusercontent.com/83225952/128087005-9b21ee3e-f5a6-4e8c-8f03-ec02e247dec1.gif)
 
-# Process
+## Process
 
-The first thing I did was to pseudocode everything and sketch all the functionalities inherent in the game so that I reach an MVP (minimum viable product). Once this has been achieved, I create some Trello cards where I distributed the workload accordingly so I could leave some time for styling and bug fixing.
+- The first thing I did was to pseudocode everything and sketch all the functionalities inherent in the game so that I could reach an MVP (minimum viable product). Once this had been achieved, I created some Trello cards, where I distributed the workload accordingly, so I could leave some time for styling and bug fixing.
 
 - To create the grid, I used a for loop iterator to create a div, for which I would add a class for each iteration to it and subsequently be appended to the grid. This would then be pushed into an empty array so I could keep track of them.
 
@@ -58,29 +59,29 @@ The first thing I did was to pseudocode everything and sketch all the functional
 <img width="416" alt="Screenshot 2021-08-03 at 23 39 31" src="https://user-images.githubusercontent.com/83225952/128095348-53474ed8-255f-4a10-a7f9-4cacb6458e68.png">
 
 
-# Known errors or bugs
+## Known errors or bugs
 
 - If the snake moves in an opposite direction than the one it's currently going on, it wouldn't die (I suspect this is because I did not condition it to do so).
 
-- I was not able withing the timeframe to fix the restart game function.
+- I was not able within the timeframe to fix the restart game function.
 
-# Challenges
+## Challenges
 
 - Without any experience whatsoever, this has been the most challenging part of the course; I was also happy to recreate a game of my childhood using JavaScript. The biggest challenges, however, were the logic behind the game action, where the snake would consume a carrot (making it grow by one div) and the second one was to make it die once it reached a border wall. 
 
-# Wins 
+## Wins 
 
 - I got to tap into the logical thinking, planning process and bug fixing which was great.
 
-- I got to understand and appreciate the amazing work is being cumulated in this industry.
+- I had the opportunity to understand and appreciate the amazing work that is being accumulated within the industry.
 
-# Key learnings
+## Key learnings
 
 - I got to solidify some concepts of JavaScript, such as array methods and timers.
 
 - Understanding myself, both in terms of weaknesses and strengths, and also when a break is required.
 
-# Future Content
+## Future Content
 
 - Had there been more time, I would have loved to make the arrow buttons of the console functional as well.
 
