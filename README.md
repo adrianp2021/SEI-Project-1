@@ -9,7 +9,7 @@ This was the first project for the GA Software Engineering Immersive course, whe
 
 ## Brief
 
-Within a timeframe of 8 days, I had to build a fully functional browser game with vanilla JavaSript.
+Within a timeframe of 8 days, I had to build a fully functional browser game with Vanilla JavaSript.
 
 ## Technologies used
 
